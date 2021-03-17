@@ -11,9 +11,23 @@ export const Form = () => {
 
     const localSubmitHandler = (e: FormEvent) => {
         e.preventDefault()
-        const totalSeconds:number = (parseInt(minutes) * 60 + parseInt(seconds))
-        const newTime:number = (totalSeconds / (parseFloat(speed)))
-        // console.log(newTime.toFixed(2))
+        let totalSeconds:number 
+        if (minutes && seconds){
+            totalSeconds = (parseInt(minutes) * 60 + parseInt(seconds))
+        } else if (!minutes && seconds){
+            totalSeconds = parseInt(seconds)
+        } else if (minutes && !seconds){
+            totalSeconds = (parseInt(minutes) * 60)
+        } else {
+            window.alert("Please enter a video length!")
+            totalSeconds = 0
+        }
+        if (totalSeconds){
+            const speedyTime:number = totalSeconds / parseInt(speed)
+            const newMinutes:number = Math.floor(speedyTime / 60)
+            const newSeconds:number = speedyTime - newMinutes * 60
+            console.log(`${newMinutes} minutes and ${newSeconds} seconds`)
+        }
     }
 
     const minuteHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,14 +45,18 @@ export const Form = () => {
     return (
         <div>
             <form onSubmit={localSubmitHandler}>
+                <label htmlFor="minutes"></label>
                 <input 
+                    id="minutes"
                     type="number" 
                     name="minutes" 
                     placeholder="original minutes" 
                     value={minutes} 
                     onChange={minuteHandler}
                 />
+                <label htmlFor="seconds"></label>
                  <input 
+                    id="seconds"
                     type="number" 
                     name="seconds" 
                     placeholder="original seconds" 

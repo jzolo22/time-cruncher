@@ -6,7 +6,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
+html, body, #root {
   height: 100vh;
   width: auto;
   background-color: #282c34;

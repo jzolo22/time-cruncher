@@ -26,7 +26,6 @@ export const Form = ({submitHandler}: FormProps) => {
             const speedyTime:number = totalSeconds / parseFloat(speed)
             const newMinutes:number = Math.floor(speedyTime / 60)
             const newSeconds:number = speedyTime - newMinutes * 60
-            console.log("speedytime: ", speedyTime)  
             submitHandler(newMinutes, newSeconds)
         }
     }

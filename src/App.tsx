@@ -85,14 +85,14 @@ function App() {
         ?
       <h3>{`You've gained back 
           ${minsGained 
-            ? `${minsGained} minutes` 
+            ? 
+            `${minsGained} ${numberText(minsGained)}` 
             : 
-            null} 
-          ${secsGained 
-            ? `and ${secsGained.toFixed(0)} seconds` 
-            : 
-            null}
-            !`}</h3>
+            null}${secsGained 
+            ? 
+            ` and ${secsGained.toFixed(0)} ${numberText(0, secsGained)}` 
+            :
+            ""}!`}</h3>
       :
       null
       }

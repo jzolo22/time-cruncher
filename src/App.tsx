@@ -42,6 +42,8 @@ function App() {
   const resetHandler = () => {
     setMinutes(0)
     setSeconds(0)
+    setMinsGained(0)
+    setSecsGained(0)
     setForm(true)
   }
 
@@ -77,7 +79,16 @@ function App() {
           : 
           null
         }
-        {
+        
+      {
+        minsGained || secsGained
+        ?
+      <h3>{`You've gained back ${minsGained ? `${minsGained} minutes` : null} ${secsGained ? `and ${secsGained.toFixed(0)} seconds` : null}!`}</h3>
+      :
+      null
+      }
+
+      {
         form
         ?
         null

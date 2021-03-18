@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import StyledBtn from '../styledComponents/StyledBtn'
 
 type FormProps = {
-    submitHandler: (minutes: number, seconds: number) => void;
+    submitHandler: (minutes: number, seconds: number, minsGained:number, secsGained:number) => void;
 }
 
 export const Form = ({submitHandler}: FormProps) => {
@@ -31,7 +31,9 @@ export const Form = ({submitHandler}: FormProps) => {
             const speedyTime:number = totalSeconds / parseFloat(speed)
             const newMinutes:number = Math.floor(speedyTime / 60)
             const newSeconds:number = speedyTime - newMinutes * 60
-            submitHandler(newMinutes, newSeconds)
+            const minsGained:number = parseInt(minutes) - newMinutes
+            const secsGained:number = parseInt(seconds) - newSeconds
+            submitHandler(newMinutes, newSeconds, minsGained, secsGained)
         }
     }
 

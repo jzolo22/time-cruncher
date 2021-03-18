@@ -13,6 +13,9 @@ const StyledInput = styled.input`
     &:focus {
         border: 5px solid pink;
     }
+    &:hover {
+        border-color: pink;
+    }
 `
 
 export default StyledInput

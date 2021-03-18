@@ -1,4 +1,7 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react'
+import StyledInput from '../styledComponents/StyledInput'
+import StyledFormContainer from '../styledComponents/StyledFormContainer'
+import styled from 'styled-components'
 
 type FormProps = {
     submitHandler: (minutes: number, seconds: number) => void;
@@ -43,10 +46,10 @@ export const Form = ({submitHandler}: FormProps) => {
     }
 
     return (
-        <div>
+        <StyledFormContainer>
             <form onSubmit={localSubmitHandler}>
                 <label htmlFor="minutes"></label>
-                <input 
+                <StyledInput 
                     id="minutes"
                     type="number" 
                     name="minutes" 
@@ -55,7 +58,7 @@ export const Form = ({submitHandler}: FormProps) => {
                     onChange={minuteHandler}
                 />
                 <label htmlFor="seconds"></label>
-                 <input 
+                 <StyledInput 
                     id="seconds"
                     type="number" 
                     name="seconds" 
@@ -63,7 +66,7 @@ export const Form = ({submitHandler}: FormProps) => {
                     value={seconds} 
                     onChange={secondHandler}
                 />
-
+                <br></br>
                 <select name="speed" onChange={speedHandler}>
                     <option selected disabled>How speedy are you?</option>
                     <option value="1.25">1.25x</option>
@@ -71,9 +74,9 @@ export const Form = ({submitHandler}: FormProps) => {
                     <option value="1.75">1.75x</option>
                     <option value="2">2x</option>
                 </select>
-
+                <br></br>
                 <button>Calculate</button>
             </form>
-        </div>
+        </StyledFormContainer>
     )
 }

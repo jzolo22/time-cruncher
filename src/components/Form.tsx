@@ -31,8 +31,9 @@ export const Form = ({submitHandler}: FormProps) => {
             const speedyTime:number = totalSeconds / parseFloat(speed)
             const newMinutes:number = Math.floor(speedyTime / 60)
             const newSeconds:number = speedyTime - newMinutes * 60
-            const minsGained:number = parseInt(minutes) - newMinutes
-            const secsGained:number = parseInt(seconds) - newSeconds
+            const gainedTime:number = totalSeconds - (newMinutes * 60 + newSeconds)
+            const minsGained:number = Math.floor(gainedTime / 60)
+            const secsGained:number = gainedTime - minsGained * 60
             submitHandler(newMinutes, newSeconds, minsGained, secsGained)
         }
     }

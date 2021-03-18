@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useState } from 'react'
 import StyledInput from '../styledComponents/StyledInput'
 import StyledFormContainer from '../styledComponents/StyledFormContainer'
 import styled from 'styled-components'
+import StyledBtn from '../styledComponents/StyledBtn'
 
 type FormProps = {
     submitHandler: (minutes: number, seconds: number) => void;
@@ -75,7 +76,7 @@ export const Form = ({submitHandler}: FormProps) => {
                     <option value="2">2x</option>
                 </select>
                 <br></br>
-                <button>Calculate</button>
+                <StyledBtn>Calculate! </StyledBtn>
             </form>
         </StyledFormContainer>
     )

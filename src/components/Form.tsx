@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import StyledInput from '../styledComponents/StyledInput'
 import StyledFormContainer from '../styledComponents/StyledFormContainer'
+import StyledSelect from '../styledComponents/StyledSelect'
 import styled from 'styled-components'
 import StyledBtn from '../styledComponents/StyledBtn'
 
@@ -68,13 +69,13 @@ export const Form = ({submitHandler}: FormProps) => {
                     onChange={secondHandler}
                 />
                 <br></br>
-                <select name="speed" onChange={speedHandler}>
+                <StyledSelect name="speed" onChange={speedHandler}>
                     <option selected disabled>How speedy are you?</option>
                     <option value="1.25">1.25x</option>
                     <option value="1.5">1.5x</option>
                     <option value="1.75">1.75x</option>
                     <option value="2">2x</option>
-                </select>
+                </StyledSelect>
                 <br></br>
                 <StyledBtn>Calculate! </StyledBtn>
             </form>

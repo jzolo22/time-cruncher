@@ -1,16 +1,21 @@
 import './App.css';
 import {useState} from 'react'
 import {Form} from './components/Form';
+import StyledBtn from './styledComponents/StyledBtn';
+import StyledFormContainer from './styledComponents/StyledFormContainer';
 
 function App() {
   const [minutes, setMinutes] = useState(0)
   const [seconds, setSeconds] = useState(0)
+  const [form, setForm] = useState(true)
+
   // const originalLength:string = "original length"
   // const speed:string = "speed"
 
   const submitHandler = (minutes: number, seconds: number) => {
     setMinutes(minutes)
     setSeconds(seconds)
+    setForm(false)
   }
 
   const numberText = (minutes: number = 0, seconds: number = 0) => {
@@ -21,10 +26,22 @@ function App() {
     }
   }
 
+  const resetHandler = () => {
+    setMinutes(0)
+    setSeconds(0)
+    setForm(true)
+  }
+
   return (
     <div className="main-container">
-      <Form submitHandler={submitHandler} />
-      <div>
+      {
+        form
+        ?
+        <Form submitHandler={submitHandler} />
+        :
+        null
+      }
+      <StyledFormContainer>
         {
           minutes && seconds 
           ? 
@@ -46,7 +63,14 @@ function App() {
           : 
           null
         }
-      </div>
+        {
+        form
+        ?
+        null
+        :
+        <StyledBtn onClick={resetHandler}>Another!</StyledBtn>
+      }
+      </StyledFormContainer>
     </div>
   );
 }

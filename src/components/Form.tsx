@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 
-// type FormProps = {
-//     calculateHandler: (length: number, speed: number) => number;
-// }
+type FormProps = {
+    submitHandler: (minutes: number, seconds: number) => void;
+}
 
-export const Form = () => {
+export const Form = ({submitHandler}: FormProps) => {
     const [minutes, setMinutes] = useState("")
     const [seconds, setSeconds] = useState("")
     const [speed, setSpeed] = useState("")
@@ -23,10 +23,11 @@ export const Form = () => {
             totalSeconds = 0
         }
         if (totalSeconds){
-            const speedyTime:number = totalSeconds / parseInt(speed)
+            const speedyTime:number = totalSeconds / parseFloat(speed)
             const newMinutes:number = Math.floor(speedyTime / 60)
             const newSeconds:number = speedyTime - newMinutes * 60
-            console.log(`${newMinutes} minutes and ${newSeconds} seconds`)
+            console.log("speedytime: ", speedyTime)  
+            submitHandler(newMinutes, newSeconds)
         }
     }
 

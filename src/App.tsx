@@ -11,16 +11,38 @@ function App() {
   const submitHandler = (minutes: number, seconds: number) => {
     setMinutes(minutes)
     setSeconds(seconds)
-    // return minutes ? <h2>{`Your new time is: ${minutes} & ${seconds}`}</h2> : null
+  }
+
+  const numberText = (minutes: number = 0, seconds: number = 0) => {
+    if (minutes) {
+      return minutes === 1 ? "minute" : "minutes"
+    } else if (seconds) {
+      return seconds === 1 ? "second" : "seconds"
+    }
   }
 
   return (
     <div className="main-container">
       <Form submitHandler={submitHandler} />
       <div>
-        {minutes || seconds 
+        {
+          minutes && seconds 
           ? 
-          <h2>{`The video is now only ${minutes} minutes and ${seconds.toFixed(0)} seconds long!`}</h2> 
+          <h2>{`The video is now only ${minutes} ${numberText(minutes)} and ${seconds.toFixed(0)} seconds long!`}</h2> 
+          : 
+          null
+        }
+        {
+          minutes && !seconds 
+          ? 
+          <h2>{`The video is now only ${minutes} ${numberText(minutes)} long!`}</h2> 
+          : 
+          null
+        }
+        {
+          !minutes && seconds 
+          ? 
+          <h2>{`The video is now only ${seconds.toFixed(0)} ${numberText(0, seconds)} long!`}</h2> 
           : 
           null
         }

@@ -8,12 +8,12 @@ const StyledBtn = styled.button`
     background-color: white;
     margin: 3%;
     color: black;
-    -webkit-transition: 0.5s;
+    -webkit-transition: 0.2s;
     box-sizing: border-box;
     text-decoration:none;
     border:0.16em solid rgba(255,255,255,0);
     &:hover {
-        border-color: pink;
+        background-color: pink;
     }
 `
 

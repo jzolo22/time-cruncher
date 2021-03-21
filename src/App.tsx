@@ -4,6 +4,7 @@ import {Form} from './components/Form';
 import StyledBtn from './styledComponents/StyledBtn';
 import StyledFormContainer from './styledComponents/StyledFormContainer';
 import StyledHeader from './styledComponents/StyledHeader';
+import CanDo from './components/CanDo';
 
 function App() {
   const [minutes, setMinutes] = useState(0)
@@ -84,25 +85,26 @@ function App() {
         {
           minsGained && secsGained 
           ? 
-          <h2>{`You've gained back ${minsGained} ${numberText(minsGained)} and ${secsGained.toFixed(0)} ${numberText(0, secsGained)}!`}</h2> 
+          <h1>{`You've gained back ${minsGained} ${numberText(minsGained)} and ${secsGained.toFixed(0)} ${numberText(0, secsGained)}!`}</h1> 
           : 
           null
         }
         {
           minsGained && !secsGained 
           ? 
-          <h2>{`You've gained back ${minsGained} ${numberText(minsGained)}!`}</h2> 
+          <h1>{`You've gained back ${minsGained} ${numberText(minsGained)}!`}</h1> 
           : 
           null
         }
         {
           !minsGained && secsGained 
           ? 
-          <h2>{`You've gained back ${secsGained.toFixed(0)} ${numberText(0, secsGained)}!`}</h2> 
+          <h1>{`You've gained back ${secsGained.toFixed(0)} ${numberText(0, secsGained)}!`}</h1> 
           : 
           null
         }
 
+        <CanDo minutes={minsGained} seconds={secsGained}/>
       
       {
         form

@@ -11,6 +11,7 @@ function App() {
   const [minsGained, setMinsGained] = useState(0)
   const [secsGained, setSecsGained] = useState(0)
   const [form, setForm] = useState(true)
+ 
 
   // const originalLength:string = "original length"
   // const speed:string = "speed"
@@ -80,23 +81,29 @@ function App() {
           null
         }
         
-      {
-        minsGained || secsGained
-        ?
-      <h3>{`You've gained back 
-          ${minsGained 
-            ? 
-            `${minsGained} ${numberText(minsGained)}` 
-            : 
-            null}${secsGained 
-            ? 
-            ` and ${secsGained.toFixed(0)} ${numberText(0, secsGained)}` 
-            :
-            ""}!`}</h3>
-      :
-      null
-      }
+        {
+          minsGained && secsGained 
+          ? 
+          <h2>{`You've gained back ${minsGained} ${numberText(minsGained)} and ${secsGained.toFixed(0)} ${numberText(0, secsGained)}!`}</h2> 
+          : 
+          null
+        }
+        {
+          minsGained && !secsGained 
+          ? 
+          <h2>{`You've gained back ${minsGained} ${numberText(minsGained)}!`}</h2> 
+          : 
+          null
+        }
+        {
+          !minsGained && secsGained 
+          ? 
+          <h2>{`You've gained back ${secsGained.toFixed(0)} ${numberText(0, secsGained)}!`}</h2> 
+          : 
+          null
+        }
 
+      
       {
         form
         ?
